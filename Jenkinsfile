@@ -3,6 +3,11 @@ pipeline {
 
     stages {
         stage('Build') { 
+             post {
+                failure {
+                    echo 'HERE'
+                }
+              }
             steps { 
                 sh 'make' 
             }
