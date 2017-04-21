@@ -21,6 +21,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'make publish'
+                githubNotify description: 'This is a shorted example',  status: 'SUCCESS'
             }
         }
     }
