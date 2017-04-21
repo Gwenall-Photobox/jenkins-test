@@ -2,7 +2,6 @@ pipeline {
     agent any 
 
     stages {
-                githubNotify description: 'This is a shorted example',  status: 'SUCCESS'
         stage('Build') { 
              post {
                 failure {
@@ -10,6 +9,7 @@ pipeline {
                 }
               }
             steps { 
+                githubNotify description: 'This is a shorted example',  status: 'SUCCESS'
                 sh 'make' 
             }
         }
