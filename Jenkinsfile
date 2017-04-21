@@ -10,7 +10,11 @@ pipeline {
               }
             steps { 
                 checkout scm
-                githubNotify credentialsId: 'github-photobox-services', description: 'This is a shorted example',  status: 'SUCCESS'
+                def is_pr = env.JOB_NAME.endsWith("_pull-requests")
+if (is_pr) {
+    setGitHubPullRequestStatus state: 'PENDING', context: "${env.JOB_NAME}", message: "Run #${env.BUILD_NUMBER} started"
+
+}
                 sh 'make' 
             }
         }
