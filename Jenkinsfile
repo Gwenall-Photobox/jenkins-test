@@ -9,6 +9,7 @@ pipeline {
                 }
               }
             steps { 
+                checkout scm
                 githubNotify credentialsId: 'github-photobox-services', description: 'This is a shorted example',  status: 'SUCCESS'
                 sh 'make' 
             }
