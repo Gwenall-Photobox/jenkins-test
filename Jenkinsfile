@@ -9,7 +9,7 @@ pipeline {
                 }
               }
             steps { 
-                githubNotify description: 'This is a shorted example',  status: 'SUCCESS'
+                githubNotify credentialsId: github-photobox-services, description: 'This is a shorted example',  status: 'SUCCESS'
                 sh 'make' 
             }
         }
