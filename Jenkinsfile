@@ -7,4 +7,12 @@ node {
     step([$class: 'GitHubCommitStatusSetter', contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: 'jenkins-test']])
 
     step([$class: 'GitHubSetCommitStatusBuilder', statusMessage: [content: 'Pending sleep']])
+
+      step([$class: 'GitHubCommitStatusSetter',
+            contextSource: [$class: 'ManuallyEnteredCommitContextSource',
+                            context: 'Test Context'],
+            statusResultSource: [$class: 'ConditionalStatusResultSource',
+                                 results: [[$class: 'AnyBuildResult',
+                                            message: 'test message',
+                                            state: 'SUCCESS']]]])
 }
