@@ -16,6 +16,7 @@ node {
                                             message: 'test message',
                                             state: 'SUCCESS']]]])
 
-    githubNotify context: 'Notification key', description: 'This is a shorted example',  status: 'SUCCESS', credentialsId: 'github-photobox-services'
+//    githubNotify context: 'Notification key', description: 'This is a shorted example',  status: 'SUCCESS', credentialsId: 'github-photobox-services'
+    githubNotify context: 'Notification key', description: 'This is a shorted example',  status: 'SUCCESS', credentialsId: 'pbx-test-notifications'
 
 }
