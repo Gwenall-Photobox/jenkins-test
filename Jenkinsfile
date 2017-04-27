@@ -15,4 +15,6 @@ node {
                                  results: [[$class: 'AnyBuildResult',
                                             message: 'test message',
                                             state: 'SUCCESS']]]])
+
+githubNotify context: 'Notification key', description: 'This is a shorted example',  status: 'SUCCESS'
 }
