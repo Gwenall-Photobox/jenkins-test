@@ -15,6 +15,17 @@ def githubstatus(String context, String status, String message){
           results: [[$class: 'AnyBuildResult', state: status, message: message]]]])
 }
 
+
+void setBuildStatus2(String message, String state) {
+  step([
+      $class: "GitHubCommitStatusSetter",
+      reposSource: [$class: "ManuallyEnteredRepositorySource", url: "https://github.com/my-org/my-repo"],
+      contextSource: [$class: "ManuallyEnteredCommitContextSource", context: "ci/jenkins/build-status"],
+      errorHandlers: [[$class: "ChangingBuildStatusErrorHandler", result: "UNSTABLE"]],
+      statusResultSource: [ $class: "ConditionalStatusResultSource", results: [[$class: "AnyBuildResult", message: message, state: state]] ]
+  ]);
+}
+
 node {
     checkout scm
     def is_pr = env.JOB_NAME.endsWith("_pull-requests");
@@ -36,6 +47,8 @@ node {
                                             state: 'SUCCESS']]]])
 
 setBuildStatus("Build complete", "SUCCESS");
+
+sleep 30
 
 //    githubNotify context: 'Notification key', description: 'This is a shorted example',  status: 'SUCCESS', credentialsId: 'github-photobox-services'
 //    githubNotify context: 'Notification key', description: 'This is a shorted example',  status: 'SUCCESS', credentialsId: 'global-github-pbx-test-notifications'
