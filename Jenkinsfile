@@ -8,6 +8,12 @@ void setBuildStatus(String message, String state) {
   ]);
 }
 
+def githubstatus(String context, String status, String message){
+  step([$class: 'GitHubCommitStatusSetter',
+      contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: context],
+      statusResultSource: [$class: 'ConditionalStatusResultSource',
+          results: [[$class: 'AnyBuildResult', state: status, message: message]]]])
+}
 
 node {
     checkout scm
@@ -18,6 +24,8 @@ node {
     step([$class: 'GitHubCommitStatusSetter', contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: 'jenkins-test']])
 
     step([$class: 'GitHubSetCommitStatusBuilder', statusMessage: [content: 'Pending sleep']])
+
+    githubstatus('andy-githubstatus', 'SUCCESS', 'crap')
 
       step([$class: 'GitHubCommitStatusSetter',
             contextSource: [$class: 'ManuallyEnteredCommitContextSource',
