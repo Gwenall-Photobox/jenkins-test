@@ -18,7 +18,6 @@ if (is_pr) {
 
     setGitHubPullRequestStatus state: 'PENDING', context: "${env.JOB_NAME}", message: "Run #${env.BUILD_NUMBER} started"
 
-
                 sh 'make' 
             }
         }
