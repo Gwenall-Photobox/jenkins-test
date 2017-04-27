@@ -17,4 +17,5 @@ node {
                                             state: 'SUCCESS']]]])
 
     githubNotify context: 'Notification key', description: 'This is a shorted example',  status: 'SUCCESS', credentialsId: 'github-photobox-services'
+
 }
