@@ -32,7 +32,8 @@ node {
 
 
 githubNotify account: 'raul-arabaolaza', context: 'Final Test', credentialsId: 'global-github-pbx-test-notifications',
-    description: 'This is an example', repo: 'acceptance-test-harness', sha: '0b5936eb903d439ac0c0bf84940d73128d5e9487'    , status: 'SUCCESS', targetUrl: 'http://www.cloudbees.com'
+    description: 'This is an example', repo: 'photobox/jenkins-test' , status: 'SUCCESS', targetUrl: 'http://www.cloudbees.com'
+//sha: '0b5936eb903d439ac0c0bf84940d73128d5e9487' 
 
 
 //    setGitHubPullRequestStatus state: 'PENDING', context: "${env.JOB_NAME}", message: "Run #${env.BUILD_NUMBER} started";
