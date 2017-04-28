@@ -31,7 +31,7 @@ node {
     def is_pr = env.JOB_NAME.endsWith("_pull-requests");
 
 
-githubNotify account: 'raul-arabaolaza', context: 'Final Test', credentialsId: 'raul-github',
+githubNotify account: 'raul-arabaolaza', context: 'Final Test', credentialsId: 'global-github-pbx-test-notifications',
     description: 'This is an example', repo: 'acceptance-test-harness', sha: '0b5936eb903d439ac0c0bf84940d73128d5e9487'    , status: 'SUCCESS', targetUrl: 'http://www.cloudbees.com'
 
 
