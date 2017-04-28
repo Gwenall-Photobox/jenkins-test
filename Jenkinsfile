@@ -30,7 +30,13 @@ node {
     checkout scm
     def is_pr = env.JOB_NAME.endsWith("_pull-requests");
 
-    setGitHubPullRequestStatus state: 'PENDING', context: "${env.JOB_NAME}", message: "Run #${env.BUILD_NUMBER} started";
+
+githubNotify account: 'raul-arabaolaza', context: 'Final Test', credentialsId: 'raul-github',
+    description: 'This is an example', repo: 'acceptance-test-harness', sha: '0b5936eb903d439ac0c0bf84940d73128d5e9487'
+    , status: 'SUCCESS', targetUrl: 'http://www.cloudbees.com'
+
+
+//    setGitHubPullRequestStatus state: 'PENDING', context: "${env.JOB_NAME}", message: "Run #${env.BUILD_NUMBER} started";
 
     //works but [Set GitHub commit status (universal)] PENDING on repos [] (sha:5152281) with context:jenkins-test
     step([$class: 'GitHubCommitStatusSetter', contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: 'jenkins-test']])
